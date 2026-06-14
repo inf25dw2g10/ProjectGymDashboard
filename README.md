@@ -137,7 +137,7 @@ Documentação técnica da API (OpenAPI, Postman, Sequelize): ver [`api/README.m
 
 ## Utilização de ferramentas IA
 
-Consideramos que as ferramentas IA representou um apoio relevante no contexto do desenvolvimento e aprendizagem deste projeto.  
+Consideramos que as ferramentas IA representaram um apoio relevante no contexto do desenvolvimento e aprendizagem deste projeto.  
 Estas ferramentas permitiram-nos explorar decisões técnicas com maior agilidade, aprofundando a compreensão das suas implicações e **trade-offs** no contexto do projeto.
 
 ---
