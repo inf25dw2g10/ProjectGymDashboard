@@ -8,7 +8,7 @@ Desenvolvido pelo **Grupo 10 - inf26dw2g10**
 - [Felipe Castilho](https://github.com/a047152) - a047152@umaia.pt
 - [Juliana Moreira](https://github.com/julianaam13) - a047188@umaia.pt
 
-Organização **GitHub**: [inf25dw2g10/ProjectGym](https://github.com/inf25dw2g10/ProjectGym)  
+Organização **GitHub**: [inf25dw2g10/ProjectGym](https://github.com/inf25dw2g10/ProjectGymDashboard)  
 Repositório **DockerHub**: [inf25dw2g10](https://hub.docker.com/repositories/inf25dw2g10)
 
 ---
