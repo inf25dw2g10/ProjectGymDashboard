@@ -1,4 +1,4 @@
-# GymProjectM2 - Frontend React + API
+# ProjectGymDashboard - Frontend React + API
 
 Aplicação Web Cliente em **ReactJS** para a **GymAPI** (REST), com autenticação e autorização por roles.
 
