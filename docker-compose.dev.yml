@@ -1,0 +1,87 @@
+# Project Gym - Desenvolvimento (MySQL + API nodemon + CRA hot reload)
+# Uso: docker compose -f docker-compose.dev.yml up --build
+# App: http://localhost:8080  |  API: http://localhost:3000
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: gym_mysql_dev
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root1234}
+      MYSQL_DATABASE: project_gym
+      MYSQL_USER: gymuser
+      MYSQL_PASSWORD: ${DB_PASSWORD:-gympass1234}
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data_dev:/var/lib/mysql
+    networks:
+      - gym_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-root1234}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: ./api
+    container_name: gym_api_dev
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: gymuser
+      DB_PASSWORD: ${DB_PASSWORD:-gympass1234}
+      DB_NAME: project_gym
+      SESSION_SECRET: ${SESSION_SECRET:-super_secret_key}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:8080}
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-}
+      GITHUB_CALLBACK_URL: ${GITHUB_CALLBACK_URL:-http://localhost:8080/auth/github/callback}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_CALLBACK_URL: ${GOOGLE_CALLBACK_URL:-http://localhost:8080/auth/google/callback}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - gym_network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: gym_frontend_dev
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    environment:
+      PROXY_TARGET: http://api:3000
+      HOST: 0.0.0.0
+      PORT: 8080
+      CHOKIDAR_USEPOLLING: "true"
+      WDS_SOCKET_PORT: "8080"
+      CI: "true"
+    depends_on:
+      - api
+    networks:
+      - gym_network
+
+volumes:
+  mysql_data_dev:
+
+networks:
+  gym_network:
+    driver: bridge
