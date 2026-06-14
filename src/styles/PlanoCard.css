@@ -1,0 +1,180 @@
+/* ─── PLANO CARD ─────────────────────────────────────────────── */
+
+.pc-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  /* Altura mínima uniforme - garante que todos os cards têm a mesma base */
+  min-height: 180px;
+}
+
+/* Card clicável (com onVerExercicios) */
+.pc-card--clickable {
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.pc-card--clickable:hover {
+  border-color: #444;
+  background: var(--surface-3, #1c1c1c);
+}
+
+.pc-card--clickable:focus-visible {
+  outline: 2px solid var(--text-muted);
+  outline-offset: 2px;
+}
+
+/* Corpo - cresce para empurrar rodapé para baixo */
+.pc-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pc-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.pc-card__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.pc-card__titulo {
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.pc-card__tipo {
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--text-sub);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pc-card__status {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  padding: 3px 9px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+.pc-card__status--on {
+  color: #5a9a6f;
+  border-color: #2a4a35;
+  background: #0e1f16;
+}
+
+.pc-card__status--off {
+  color: var(--text-sub);
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+/* Descrição - truncada a 2 linhas para cards uniformes */
+.pc-card__desc {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin: 0;
+  /* Clamp a 2 linhas */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(0.8rem * 1.5 * 2); /* reserva sempre espaço para 2 linhas */
+}
+
+.pc-card__desc--vazia {
+  color: var(--text-sub);
+  font-style: italic;
+  opacity: 0.45;
+}
+
+.pc-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.pc-card__badge {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 2px 8px;
+  color: var(--text-sub);
+}
+
+.pc-card__detail {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--text-dim);
+}
+
+/* Rodapé de ações - sempre na parte inferior do card */
+.pc-card__acoes {
+  display: flex;
+  gap: 6px;
+  padding-top: 12px;
+  margin-top: auto;
+}
+
+.pc-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-sm);
+  font-family: var(--font);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.15s, border-color 0.15s, color 0.15s;
+  border: none;
+  padding: 6px 12px;
+}
+
+.pc-card__btn--edit {
+  background: transparent;
+  color: var(--text-sub);
+  border: 1px solid var(--border);
+}
+
+.pc-card__btn--edit:hover {
+  color: var(--text);
+  border-color: #555;
+}
+
+.pc-card__btn--delete {
+  background: transparent;
+  color: var(--error-text);
+  border: 1px solid var(--error-border);
+}
+
+.pc-card__btn--delete:hover {
+  background: var(--error-bg);
+}

@@ -1,0 +1,54 @@
+/* ─── ERROR MESSAGE ──────────────────────────────────────────── */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: var(--r-sm);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.error-message__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--error-text);
+  flex-shrink: 0;
+}
+
+.error-message__text {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--error-text);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+/* ─── LOADING SPINNER ────────────────────────────────────────── */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 16px;
+}
+
+.loading-spinner__ring {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--border);
+  border-top-color: #555;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+.loading-spinner__text {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-sub);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}

@@ -1,0 +1,586 @@
+/* ─── COMPONENTES DE LISTA / CARD ────────────────────────────── */
+
+/* ClienteCard */
+.cc-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.cc-avatar-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.cc-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cc-avatar-initials {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.cc-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  width: 100%;
+}
+
+.cc-nome {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cc-email,
+.cc-username {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cc-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* UserRow extras */
+.adm-select {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 6px 10px;
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
+}
+
+.adm-select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.adm-select option {
+  background: #1a1a1a;
+  color: var(--text);
+}
+
+.adm-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.adm-user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.adm-role-badge {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 2px 8px;
+  color: var(--text-sub);
+}
+
+.adm-tr--busy {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.adm-tr--clickable {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.adm-tr--clickable:hover {
+  background: var(--surface-hover, rgba(255,255,255,0.05));
+}
+
+/* MetaItem */
+.meta-item {
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.meta-item__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.meta-item__desc {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.meta-item__plano {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  margin-top: 4px;
+  display: block;
+}
+
+.meta-item__progress-labels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.meta-item__progress-text,
+.meta-item__progress-pct {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--text-dim);
+}
+
+.meta-item__progress-pct {
+  font-weight: 500;
+  color: var(--text-sub);
+}
+
+.meta-item__progress-bar {
+  height: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.meta-item__progress-fill {
+  height: 100%;
+  background: var(--text);
+  border-radius: 1px;
+  transition: width 0.4s ease;
+}
+
+.meta-item__progress-fill--done {
+  background: #5a9a6f;
+}
+
+.meta-item__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.meta-item__bottom .pg-card__actions {
+  margin-left: auto;
+}
+
+.meta-item__prazo {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--text-dim);
+}
+
+/* Misc pages (Unauthorized, OAuth) */
+.misc-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.misc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  width: 100%;
+  max-width: 400px;
+  padding: 48px 40px;
+  text-align: center;
+}
+
+.misc-card__eyebrow {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.misc-card__title {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--text);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.misc-card__text {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.misc-card__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  font-family: var(--font);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: opacity 0.15s;
+}
+
+.misc-card__link:hover {
+  opacity: 0.88;
+}
+
+.misc-card__link--ghost {
+  background: transparent;
+  color: var(--text-sub);
+  border: 1px solid var(--border);
+}
+
+.misc-card__link--ghost:hover {
+  color: var(--text);
+  border-color: #555;
+  opacity: 1;
+}
+
+/* ─── ClienteCard: clickable & sem-treinador ──────────────────── */
+.cc-card--clickable {
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.cc-card--clickable:hover {
+  border-color: #444;
+  background: #1f1f1f;
+}
+
+.cc-card--clickable:focus-visible {
+  outline: 1px solid #555;
+  outline-offset: 2px;
+}
+
+.cc-card--unassigned {
+  border-color: #3a2a10;
+}
+
+.cc-badge--no-trainer {
+  color: #9a7a3a !important;
+  border-color: #4a3a18 !important;
+  background: #1a1208 !important;
+}
+
+.cc-ver-btn {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  margin-top: 4px;
+  transition: color 0.15s;
+}
+
+.cc-card--clickable:hover .cc-ver-btn {
+  color: var(--text-dim);
+}
+
+/* ─── ClienteDetailPanel (drawer lateral) ────────────────────── */
+.cdp-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cdp-panel {
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideInRight 0.2s ease;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(40px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+.cdp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px 20px 18px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.cdp-header__info {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.cdp-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.cdp-avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cdp-avatar__initials {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  color: var(--text-dim);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.cdp-header__eyebrow {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.cdp-header__nome {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
+  margin: 0 0 2px;
+}
+
+.cdp-header__email {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--text-dim);
+}
+
+.cdp-close {
+  background: none;
+  border: none;
+  color: var(--text-sub);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px 6px;
+  line-height: 1;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.cdp-close:hover {
+  color: var(--text);
+}
+
+.cdp-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.cdp-tab {
+  flex: 1;
+  padding: 10px 4px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-sub);
+  font-family: var(--font);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.cdp-tab:hover {
+  color: var(--text-dim);
+}
+
+.cdp-tab--active {
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+
+.cdp-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cdp-empty {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-sub);
+  text-align: center;
+  padding: 32px 0;
+}
+
+.cdp-item {
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cdp-item__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cdp-item__num {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a9ab0;
+  border: 1px solid #3a4555;
+  background: #121820;
+  border-radius: 2px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+}
+
+.cdp-item__titulo {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text);
+  flex: 1;
+  min-width: 0;
+}
+
+.cdp-item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cdp-item__notas {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ─── ClienteDetailPanel: botão de navegação para a aba completa ─ */
+.cdp-nav-btn {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 14px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  color: var(--text-sub);
+  font-family: var(--font);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.cdp-nav-btn:hover {
+  border-color: #555;
+  color: var(--text);
+  background: var(--surface-2);
+}

@@ -1,0 +1,226 @@
+/* ─── LOGIN PAGE ─────────────────────────────────────────────── */
+.login-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.login-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.login-card__header {
+  padding: 48px 40px 28px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.login-card__label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.login-card__title {
+  font-size: 1.7rem;
+  font-weight: 300;
+  color: var(--text);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.login-card__title span {
+  color: var(--text-muted);
+}
+
+/* Body */
+.login-card__body {
+  padding: 32px 40px;
+}
+
+/* Footer */
+.login-card__footer {
+  padding: 20px 40px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.login-card__footer p {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--text-sub);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── FORM ───────────────────────────────────────────────────── */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field__label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.form-field__input {
+  width: 100%;
+  padding: 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.88rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-field__input::placeholder {
+  color: #333;
+}
+
+.form-field__input:focus {
+  border-color: #555;
+}
+
+.form-field__input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Botão primário (submit) */
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background: var(--text);
+  border: none;
+  border-radius: var(--r-sm);
+  color: var(--bg);
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: opacity 0.15s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+/* Divider */
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 24px 0 20px;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.login-divider span {
+  font-size: 0.65rem;
+  color: var(--text-sub);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* OAuth buttons */
+.oauth-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.oauth-btn {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  color: #ccc;
+  text-decoration: none;
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  gap: 12px;
+}
+
+.oauth-btn:hover {
+  border-color: #555;
+  color: var(--text);
+  background: #1f1f1f;
+}
+
+.oauth-btn__icon {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+.oauth-btn__arrow {
+  position: absolute;
+  right: 20px;
+  opacity: 0.2;
+  transition: opacity 0.15s, transform 0.15s;
+  font-style: normal;
+}
+
+.oauth-btn:hover .oauth-btn__arrow {
+  opacity: 0.6;
+  transform: translateX(3px);
+}
+
+/* Nota de rodapé */
+.login-note {
+  margin-top: 20px;
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: #333;
+  text-align: center;
+  line-height: 1.5;
+}

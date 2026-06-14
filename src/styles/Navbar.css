@@ -1,0 +1,72 @@
+/* ─── NAVBAR ─────────────────────────────────────────────────── */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar__brand-name {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.navbar__brand-name span {
+  color: var(--text-muted);
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar__role {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text-sub);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.navbar__username {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+}
+
+.navbar__logout {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--text-muted);
+  font-family: var(--font);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.navbar__logout:hover {
+  color: var(--text);
+  border-color: #555;
+}
+
+@media (max-width: 480px) {
+  .navbar { padding: 0 20px; }
+  .navbar__role,
+  .navbar__username { display: none; }
+}

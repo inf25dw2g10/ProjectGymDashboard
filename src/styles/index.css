@@ -1,0 +1,51 @@
+/* ─── RESET & BASE ───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg:          #0a0a0a;
+  --surface:     #141414;
+  --surface-2:   #1a1a1a;
+  --border:      #2a2a2a;
+  --border-2:    #252525;
+  --text:        #ffffff;
+  --text-muted:  #555555;
+  --text-sub:    #444444;
+  --text-dim:    #777777;
+
+  /* Semântica */
+  --error-text:  #ff5555;
+  --error-bg:    #1a0a0a;
+  --error-border:#3a1a1a;
+  --ok-text:     #cccccc;
+
+  /* Tipografia */
+  --font: 'Inter', sans-serif;
+
+  /* Bordas */
+  --r-lg: 4px;
+  --r-sm: 2px;
+}
+
+html, body, #root {
+  min-height: 100vh;
+  background: var(--bg);
+  font-family: var(--font);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── SPINNER KEYFRAME (LoadingSpinner usa este) ─────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── SCROLLBAR DISCRETA ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
