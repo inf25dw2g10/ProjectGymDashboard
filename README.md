@@ -117,8 +117,8 @@ Documentação técnica da API (OpenAPI, Postman, Sequelize): ver [`api/README.m
 | [`api/`](./api/) | GymAPI - Express, modelos, migrations, seeders |
 | [`public/`](./public/) | Template HTML da SPA |
 | [`docker-compose.prod.yml`](./docker-compose.prod.yml) | Stack de produção |
-| [`docker-compose.dev.yml`](docker-compose.dev.yml) | Stack de desenvolvimento |
-| [`openapi.yaml`](../api/openapi.yaml) | Especificação OpenAPI (Swagger) |
+| [`docker-compose.dev.yml`](./docker-compose.dev.yml) | Stack de desenvolvimento |
+| [`openapi.yaml`](./api/openapi.yaml) | Especificação OpenAPI (Swagger) |
 
 ---
 
