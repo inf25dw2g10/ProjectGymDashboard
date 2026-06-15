@@ -1,14 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * PlanoCard - apresenta um plano de treino.
- *
- * - Clicar no card (fora dos botões) navega para exercícios com filtro de plano
- * - Botões de editar/apagar ficam sempre no rodapé, independente da descrição
- * - Descrição truncada a 2 linhas para cards uniformes
- */
-
 const OBJETIVO_META = {
   emagrecimento: 'Emagrecimento',
   hipertrofia:   'Hipertrofia',
@@ -21,11 +13,9 @@ const PlanoCard = ({ plano, nomeCliente, onEditar, onApagar, onVerExercicios }) 
   const objLabel = OBJETIVO_META[plano.objetivo] || plano.objetivo;
   const temAcoes = onEditar || onApagar;
 
-  const subtexto = nomeCliente
-    ? { label: 'Cliente', nome: nomeCliente }
-    : plano.treinador
-      ? { label: 'Treinador', nome: plano.treinador.displayName || plano.treinador.username }
-      : null;
+  const nomeTrainador = plano.treinador
+    ? (plano.treinador.displayName || plano.treinador.username)
+    : null;
 
   const handleCardClick = () => {
     if (onVerExercicios) onVerExercicios(plano.id);
@@ -40,16 +30,17 @@ const PlanoCard = ({ plano, nomeCliente, onEditar, onApagar, onVerExercicios }) 
       onKeyDown={onVerExercicios ? (e) => { if (e.key === 'Enter') handleCardClick(); } : undefined}
     >
 
-      {/* ── Corpo (cresce para empurrar o rodapé para baixo) ── */}
       <div className="pc-card__body">
 
         {/* Cabeçalho */}
         <div className="pc-card__header">
           <div className="pc-card__titles">
             <h3 className="pc-card__titulo">{plano.titulo}</h3>
-            <span className="pc-card__tipo">
-              {plano.tipo === 'pessoal' ? 'Pessoal' : 'Profissional'}
-            </span>
+            <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap', marginTop: '0.2rem' }}>
+              <span className={`pg-badge${plano.tipo === 'profissional' ? ' pg-badge--ok' : ''}`} style={{ fontSize: '0.7rem' }}>
+                {plano.tipo === 'pessoal' ? 'Pessoal' : 'Profissional'}
+              </span>
+            </div>
           </div>
           <span
             className={`pc-card__status ${plano.ativo ? 'pc-card__status--on' : 'pc-card__status--off'}`}
@@ -67,18 +58,20 @@ const PlanoCard = ({ plano, nomeCliente, onEditar, onApagar, onVerExercicios }) 
         <div className="pc-card__meta">
           <span className="pc-card__badge">{objLabel}</span>
           <span className="pc-card__detail">{plano.duracaoSem} sem.</span>
-          {subtexto && (
-            <span className="pc-card__detail">{subtexto.label}: <strong>{subtexto.nome}</strong></span>
+          {nomeCliente && (
+            <span className="pc-card__detail">Cliente: <strong>{nomeCliente}</strong></span>
+          )}
+          {nomeTrainador && (
+            <span className="pc-card__detail">Treinador: <strong>{nomeTrainador}</strong></span>
           )}
         </div>
 
       </div>
 
-      {/* ── Rodapé - sempre no fundo do card ── */}
       {temAcoes && (
         <div
           className="pc-card__acoes"
-          onClick={(e) => e.stopPropagation()} // não propaga click do card
+          onClick={(e) => e.stopPropagation()}
         >
           {onEditar && (
             <button
