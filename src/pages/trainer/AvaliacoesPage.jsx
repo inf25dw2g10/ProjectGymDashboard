@@ -37,8 +37,16 @@ const FORM_INICIAL = {
   pesoKg:       '',
   alturaCm:     '',
   percGordura:  '',
+  imc:          '',
   notas:        '',
 };
+
+function calcularImc(pesoKg, alturaCm) {
+  const p = parseFloat(pesoKg);
+  const a = parseFloat(alturaCm);
+  if (!p || !a || a <= 0) return null;
+  return (p / ((a / 100) * (a / 100))).toFixed(1);
+}
 
 class AvaliacoesPage extends React.Component {
   constructor(props) {
@@ -163,6 +171,7 @@ class AvaliacoesPage extends React.Component {
         pesoKg:      avaliacao.pesoKg             != null ? String(avaliacao.pesoKg)             : '',
         alturaCm:    avaliacao.alturaCm           != null ? String(avaliacao.alturaCm)           : '',
         percGordura: avaliacao.percGordura        != null ? String(avaliacao.percGordura)        : '',
+        imc:         avaliacao.imc               != null ? String(avaliacao.imc)               : '',
         notas:       avaliacao.notas              || '',
       },
     });
@@ -174,10 +183,15 @@ class AvaliacoesPage extends React.Component {
 
   handleFormChange(e) {
     const { name, value } = e.target;
-    this.setState((prev) => ({
-      form:    { ...prev.form, [name]: value },
-      formErro: null,
-    }));
+    this.setState((prev) => {
+      const novoForm = { ...prev.form, [name]: value };
+      // Auto-calcular IMC ao alterar peso ou altura
+      if (name === 'pesoKg' || name === 'alturaCm') {
+        const imc = calcularImc(novoForm.pesoKg, novoForm.alturaCm);
+        if (imc) novoForm.imc = imc;
+      }
+      return { form: novoForm, formErro: null };
+    });
   }
 
   handleFiltroCliente(e) {
@@ -224,6 +238,7 @@ class AvaliacoesPage extends React.Component {
       pesoKg:      form.pesoKg      ? Number(form.pesoKg)      : null,
       alturaCm:    form.alturaCm    ? Number(form.alturaCm)    : null,
       percGordura: form.percGordura ? Number(form.percGordura) : null,
+      imc:         form.imc         ? Number(form.imc)         : null,
       notas:       form.notas.trim() || null,
     };
 
@@ -423,7 +438,7 @@ class AvaliacoesPage extends React.Component {
                         {clientesParaCriar.map((c) => (
                           <option key={c.id} value={c.id}>
                             {c.displayName || c.username}
-                            {!c.temTreinador ? ' (sem treinador)' : ''}
+                            {c.temTreinador === false ? ' (sem treinador)' : ''}
                           </option>
                         ))}
                       </select>
@@ -487,6 +502,16 @@ class AvaliacoesPage extends React.Component {
                     value={form.percGordura}
                     onChange={this.handleFormChange} className="pg-form__input"
                     placeholder="18.5" disabled={formLoading}
+                  />
+                </div>
+
+                <div className="pg-form__group">
+                  <label className="pg-form__label">IMC</label>
+                  <input
+                    name="imc" type="number" step="0.01" min="0" value={form.imc}
+                    onChange={this.handleFormChange} className="pg-form__input"
+                    placeholder={calcularImc(form.pesoKg, form.alturaCm) || '24.7'}
+                    disabled={formLoading}
                   />
                 </div>
 

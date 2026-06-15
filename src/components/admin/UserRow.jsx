@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
 
 const ROLES = ['admin', 'treinador', 'cliente'];
 
-const UserRow = ({ user, onAlterarRole, onApagar, onAbrirDrawer, loadingId }) => {
+const UserRow = ({ user, onAlterarRole, onAbrirDrawer, loadingId }) => {
   const nome        = user.displayName || user.username || '-';
   const estaOcupado = loadingId === user.id;
 
@@ -70,15 +70,7 @@ const UserRow = ({ user, onAlterarRole, onApagar, onAbrirDrawer, loadingId }) =>
       </td>
 
       <td onClick={(e) => e.stopPropagation()}>
-        <button
-          type="button"
-          className="pg-btn pg-btn--danger pg-btn--sm"
-          onClick={() => onApagar(user.id, nome)}
-          disabled={estaOcupado}
-          title={`Apagar ${nome}`}
-        >
-          {estaOcupado ? 'A aguardar…' : 'Apagar'}
-        </button>
+        {/* Botão apagar removido: rota DELETE /users/:id não implementada no backend */}
       </td>
     </tr>
   );
@@ -93,7 +85,6 @@ UserRow.propTypes = {
     role:        PropTypes.string,
   }).isRequired,
   onAlterarRole:  PropTypes.func.isRequired,
-  onApagar:       PropTypes.func.isRequired,
   onAbrirDrawer:  PropTypes.func,
   loadingId:      PropTypes.number,
 };

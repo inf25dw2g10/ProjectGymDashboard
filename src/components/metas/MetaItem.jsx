@@ -20,9 +20,18 @@ const ESTADO_LABEL = {
   cancelada: 'Cancelada',
 };
 
-const MetaItem = ({ meta, soPessoal, onEditar, onApagar }) => {
+const MetaItem = ({ meta, soPessoal, onEditar, onApagar, ocultarBadgeTipo, treinadores }) => {
   const badgeClass = ESTADO_BADGE[meta.estado] || ESTADO_BADGE.ativa;
   const estadoLabel = ESTADO_LABEL[meta.estado] || ESTADO_LABEL.ativa;
+
+  // Resolve nome do treinador: via objeto nested ou via lista de treinadores + plano.treinadorId
+  const treinadorNome = (() => {
+    if (meta.treinador) return meta.treinador.displayName || meta.treinador.username;
+    const treinadorId = meta.plano?.treinadorId;
+    if (!treinadorId || !treinadores?.length) return null;
+    const t = treinadores.find((u) => u.id === treinadorId);
+    return t ? (t.displayName || t.username) : null;
+  })();
 
   const progresso = meta.valorAlvo && meta.valorAlvo > 0
     ? Math.min(100, Math.round((meta.valorAtual / meta.valorAlvo) * 100))
@@ -42,7 +51,7 @@ const MetaItem = ({ meta, soPessoal, onEditar, onApagar }) => {
         <div>
           <p className="meta-item__desc">{meta.descricao}</p>
           <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', alignItems: 'center', marginTop: '0.2rem' }}>
-            {meta.tipo && (
+            {meta.tipo && !ocultarBadgeTipo && (
               <span
                 className={meta.tipo === 'profissional' ? 'pg-badge pg-badge--ok' : 'pg-badge'}
                 style={{ fontSize: '0.7rem' }}
@@ -58,9 +67,9 @@ const MetaItem = ({ meta, soPessoal, onEditar, onApagar }) => {
                 · {meta.cliente.displayName || meta.cliente.username}
               </span>
             )}
-            {!soPessoal && meta.treinador && (
+            {!soPessoal && treinadorNome && (
               <span className="meta-item__plano" style={{ marginLeft: 0 }}>
-                · Treinador: {meta.treinador.displayName || meta.treinador.username}
+                · Treinador: {treinadorNome}
               </span>
             )}
           </div>
@@ -118,10 +127,16 @@ MetaItem.propTypes = {
   soPessoal: PropTypes.bool,
   onEditar:  PropTypes.func.isRequired,
   onApagar:  PropTypes.func.isRequired,
+  ocultarBadgeTipo: PropTypes.bool,
+  treinadores: PropTypes.arrayOf(
+    PropTypes.shape({ id: PropTypes.number, displayName: PropTypes.string, username: PropTypes.string })
+  ),
 };
 
 MetaItem.defaultProps = {
   soPessoal: false,
+  ocultarBadgeTipo: false,
+  treinadores: [],
 };
 
 export default MetaItem;

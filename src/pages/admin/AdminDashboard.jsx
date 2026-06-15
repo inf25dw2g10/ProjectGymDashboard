@@ -141,9 +141,27 @@ class AdminDashboard extends React.Component {
     const user = this.state.utilizadores.find((u) => u.id === userId);
     if (!user || user.role === novoRole) return;
 
+    // Aviso se o admin está a rebaixar a sua própria conta
+    const { perfil } = this.state;
+    if (perfil && perfil.id === userId && novoRole !== 'admin') {
+      const confirmou = window.confirm(
+        `Atenção: estás a alterar o teu próprio role para "${novoRole}".\n` +
+        `Isso vai fazer logout imediatamente pois perderás acesso de admin.\n\n` +
+        `Tens a certeza que queres continuar?`
+      );
+      if (!confirmou) return;
+    }
+
     this.setState({ loadingId: userId, mensagem: null });
     try {
       await apiClient.put(`/users/${userId}/role`, { role: novoRole });
+
+      // Se o admin rebaixou a sua própria conta → logout
+      if (perfil && perfil.id === userId && novoRole !== 'admin') {
+        AuthService.logout();
+        this.props.history.push('/login');
+        return;
+      }
 
       // Atualiza localmente sem re-fetch
       this.setState((prev) => ({
@@ -295,7 +313,7 @@ class AdminDashboard extends React.Component {
                   <th>Username</th>
                   <th>Role atual</th>
                   <th>Alterar role</th>
-                  <th>Ações</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>

@@ -195,7 +195,7 @@ class MetasPage extends React.Component {
   }
 
   fecharModal() {
-    this.setState({ modalAberto: false, metaAEditar: null, formErro: null });
+    this.setState({ modalAberto: false, metaAEditar: null, formErro: null, formLoading: false });
   }
 
   // Quando o cliente muda no form de criar → filtra os planos disponíveis
@@ -470,6 +470,8 @@ class MetasPage extends React.Component {
               soPessoal={false}
               onEditar={this.abrirModalEditar}
               onApagar={this.handleApagar}
+              ocultarBadgeTipo={this.props.trainerId !== null}
+              treinadores={treinadores}
             />
           ))}
         </div>
