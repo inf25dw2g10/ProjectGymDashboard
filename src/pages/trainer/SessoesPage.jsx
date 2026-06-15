@@ -221,6 +221,7 @@ class SessoesPage extends React.Component {
           planoId:    Number(form.planoId),
           dataSessao: form.data,
           duracaoMin: form.duracao ? Number(form.duracao) : 60,
+          estado:     form.estado || 'agendada',
           notas:      form.notas.trim() || null,
         };
         // Admin pode especificar treinador; se omitido, backend usa o do plano

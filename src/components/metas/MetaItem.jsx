@@ -20,7 +20,7 @@ const ESTADO_LABEL = {
   cancelada: 'Cancelada',
 };
 
-const MetaItem = ({ meta, soPessoal, onEditar, onApagar }) => {
+const MetaItem = ({ meta, soPessoal, onEditar, onApagar, ocultarBadgeTipo }) => {
   const badgeClass = ESTADO_BADGE[meta.estado] || ESTADO_BADGE.ativa;
   const estadoLabel = ESTADO_LABEL[meta.estado] || ESTADO_LABEL.ativa;
 
@@ -42,7 +42,7 @@ const MetaItem = ({ meta, soPessoal, onEditar, onApagar }) => {
         <div>
           <p className="meta-item__desc">{meta.descricao}</p>
           <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', alignItems: 'center', marginTop: '0.2rem' }}>
-            {meta.tipo && (
+            {meta.tipo && !ocultarBadgeTipo && (
               <span
                 className={meta.tipo === 'profissional' ? 'pg-badge pg-badge--ok' : 'pg-badge'}
                 style={{ fontSize: '0.7rem' }}
@@ -118,10 +118,12 @@ MetaItem.propTypes = {
   soPessoal: PropTypes.bool,
   onEditar:  PropTypes.func.isRequired,
   onApagar:  PropTypes.func.isRequired,
+  ocultarBadgeTipo: PropTypes.bool,
 };
 
 MetaItem.defaultProps = {
   soPessoal: false,
+  ocultarBadgeTipo: false,
 };
 
 export default MetaItem;

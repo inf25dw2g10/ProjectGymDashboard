@@ -142,12 +142,15 @@ async function obter(req, res) {
 // Rota protegida a nível de route: ensureRole('admin','treinador')
 
 async function criar(req, res) {
-  const { planoId, clienteId, dataSessao, duracaoMin, notas } = req.body;
+  const { planoId, clienteId, dataSessao, duracaoMin, notas, estado } = req.body;
   const treinadorIdPayload = req.body.treinadorId ?? req.body.treinador_id;
 
   if (!planoId || !dataSessao || !duracaoMin) {
     return res.status(400).json({ erro: 'planoId, dataSessao e duracaoMin são obrigatórios.' });
   }
+
+  const ESTADOS_VALIDOS = ['agendada', 'concluida', 'cancelada'];
+  const estadoFinal = estado && ESTADOS_VALIDOS.includes(estado) ? estado : 'agendada';
 
   try {
     const plano = await PlanoTreino.findByPk(planoId);
@@ -190,7 +193,7 @@ async function criar(req, res) {
       dataSessao,
       duracaoMin,
       notas:  notas || null,
-      estado: 'agendada'
+      estado: estadoFinal
     });
 
     return res.status(201).json({ mensagem: 'Sessão criada com sucesso.', id: sessao.id });

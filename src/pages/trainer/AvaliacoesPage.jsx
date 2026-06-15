@@ -423,7 +423,7 @@ class AvaliacoesPage extends React.Component {
                         {clientesParaCriar.map((c) => (
                           <option key={c.id} value={c.id}>
                             {c.displayName || c.username}
-                            {!c.temTreinador ? ' (sem treinador)' : ''}
+                            {c.temTreinador === false ? ' (sem treinador)' : ''}
                           </option>
                         ))}
                       </select>

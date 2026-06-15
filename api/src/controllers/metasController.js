@@ -58,7 +58,7 @@ async function listar(req, res) {
     }
 
     // Treinador: restringe ao JOIN em planos profissionais seus (se não há filtros específicos)
-    let includePlano = { model: PlanoTreino, as: 'plano', attributes: ['id', 'titulo', 'tipo'] };
+    let includePlano = { model: PlanoTreino, as: 'plano', attributes: ['id', 'titulo', 'tipo', 'treinadorId'] };
     if (req.user.role === 'treinador' && !where.planoId && !where.clienteId) {
       includePlano = {
         ...includePlano,
