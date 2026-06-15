@@ -154,5 +154,5 @@ Estas ferramentas permitiram-nos explorar decisões técnicas com maior agilidad
 
 ---
 
-[^ Início](../README.md) | [Próximo >](doc/c1.md)
+[^ Início](./README.md) | [Próximo >](doc/c1.md)
 :---: | ---:
