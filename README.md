@@ -112,13 +112,13 @@ Documentação técnica da API (OpenAPI, Postman, Sequelize): ver [`api/README.m
 
 | Pasta / ficheiro | Conteúdo |
 |------------------|----------|
-| [`src/`](../src/) | Código fonte React (páginas, componentes, rotas) |
-| [`doc/`](.) | Relatório (capítulos C1-C4) e imagens |
-| [`api/`](../api/) | GymAPI - Express, modelos, migrations, seeders |
-| [`public/`](../public/) | Template HTML da SPA |
-| [`docker-compose.prod.yml`](../docker-compose.prod.yml) | Stack de produção |
-| [`docker-compose.dev.yml`](../docker-compose.dev.yml) | Stack de desenvolvimento |
-| [`openapi.yaml`](../api/openapi.yaml) | Especificação OpenAPI (Swagger) |
+| [`src/`](./src/) | Código fonte React (páginas, componentes, rotas) |
+| [`doc/`](./doc/) | Relatório (capítulos C1-C4) e imagens |
+| [`api/`](./api/) | GymAPI - Express, modelos, migrations, seeders |
+| [`public/`](./public/) | Template HTML da SPA |
+| [`docker-compose.prod.yml`](./docker-compose.prod.yml) | Stack de produção |
+| [`docker-compose.dev.yml`](./docker-compose.dev.yml) | Stack de desenvolvimento |
+| [`openapi.yaml`](./api/openapi.yaml) | Especificação OpenAPI (Swagger) |
 
 ---
 
@@ -146,10 +146,10 @@ Estas ferramentas permitiram-nos explorar decisões técnicas com maior agilidad
 
 | Capítulo | Conteúdo |
 |----------|----------|
-| [Capítulo 1](c1.md) | Apresentação do frontend, arquitectura Docker, arranque |
-| [Capítulo 2](c2.md) | Estrutura do projeto, padrões React, componentes reutilizáveis |
-| [Capítulo 3](c3.md) | Autenticação e integração com a API no lado do cliente |
-| [Capítulo 4](c4.md) | Apresentação do produto e demonstração |
+| [Capítulo 1](doc/c1.md) | Apresentação do frontend, arquitectura Docker, arranque |
+| [Capítulo 2](doc/c2.md) | Estrutura do projeto, padrões React, componentes reutilizáveis |
+| [Capítulo 3](doc/c3.md) | Autenticação e integração com a API no lado do cliente |
+| [Capítulo 4](doc/c4.md) | Apresentação do produto e demonstração |
 
 
 ---

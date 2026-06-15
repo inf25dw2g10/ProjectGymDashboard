@@ -471,7 +471,6 @@ class MetasPage extends React.Component {
               onEditar={this.abrirModalEditar}
               onApagar={this.handleApagar}
               ocultarBadgeTipo={this.props.trainerId !== null}
-              treinadores={treinadores}
             />
           ))}
         </div>
