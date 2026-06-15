@@ -146,10 +146,10 @@ Estas ferramentas permitiram-nos explorar decisões técnicas com maior agilidad
 
 | Capítulo | Conteúdo |
 |----------|----------|
-| [Capítulo 1](c1.md) | Apresentação do frontend, arquitectura Docker, arranque |
-| [Capítulo 2](c2.md) | Estrutura do projeto, padrões React, componentes reutilizáveis |
-| [Capítulo 3](c3.md) | Autenticação e integração com a API no lado do cliente |
-| [Capítulo 4](c4.md) | Apresentação do produto e demonstração |
+| [Capítulo 1](doc/c1.md) | Apresentação do frontend, arquitectura Docker, arranque |
+| [Capítulo 2](doc/c2.md) | Estrutura do projeto, padrões React, componentes reutilizáveis |
+| [Capítulo 3](doc/c3.md) | Autenticação e integração com a API no lado do cliente |
+| [Capítulo 4](doc/c4.md) | Apresentação do produto e demonstração |
 
 
 ---
