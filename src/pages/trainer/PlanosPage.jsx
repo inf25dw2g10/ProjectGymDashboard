@@ -230,9 +230,10 @@ class PlanosPage extends React.Component {
   }
 
   nomeCliente(plano) {
+    if (!plano.clienteId) return null;
     if (plano.cliente) return plano.cliente.displayName || plano.cliente.username;
     const c = this.state.clientes.find((cl) => cl.id === plano.clienteId);
-    return c ? (c.displayName || c.username) : `#${plano.clienteId}`;
+    return c ? (c.displayName || c.username) : null;
   }
 
   render() {

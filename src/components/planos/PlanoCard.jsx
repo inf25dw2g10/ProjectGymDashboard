@@ -22,8 +22,10 @@ const PlanoCard = ({ plano, nomeCliente, onEditar, onApagar, onVerExercicios }) 
   const temAcoes = onEditar || onApagar;
 
   const subtexto = nomeCliente
-    ? nomeCliente
-    : (plano.treinador ? (plano.treinador.displayName || plano.treinador.username) : null);
+    ? { label: 'Cliente', nome: nomeCliente }
+    : plano.treinador
+      ? { label: 'Treinador', nome: plano.treinador.displayName || plano.treinador.username }
+      : null;
 
   const handleCardClick = () => {
     if (onVerExercicios) onVerExercicios(plano.id);
@@ -66,7 +68,7 @@ const PlanoCard = ({ plano, nomeCliente, onEditar, onApagar, onVerExercicios }) 
           <span className="pc-card__badge">{objLabel}</span>
           <span className="pc-card__detail">{plano.duracaoSem} sem.</span>
           {subtexto && (
-            <span className="pc-card__detail">{subtexto}</span>
+            <span className="pc-card__detail">{subtexto.label}: <strong>{subtexto.nome}</strong></span>
           )}
         </div>
 

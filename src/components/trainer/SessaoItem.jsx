@@ -11,6 +11,9 @@ import ListItemActions from '../common/ListItemActions';
  */
 const SessaoItem = ({ sessao, onEditar, onApagar }) => {
   const badgeClass = badgeClassEstadoSessao(sessao.estado);
+  const treinadorNome = sessao.treinador
+    ? nomeUtilizador(sessao.treinador)
+    : null;
   const dataRaw = sessao.dataSessao || sessao.data;
   const dataFormatada = formatDateShortPt(dataRaw);
   const clienteNome = nomeUtilizador(sessao.cliente, sessao.clienteId);
@@ -26,6 +29,11 @@ const SessaoItem = ({ sessao, onEditar, onApagar }) => {
             {clienteNome} · {planoTitulo}
             {duracao ? ` · ${duracao} min` : ''}
           </p>
+          {treinadorNome && (
+            <p className="pg-card__sub" style={{ fontSize: '0.75rem', margin: '0.15rem 0 0' }}>
+              Treinador: <strong>{treinadorNome}</strong>
+            </p>
+          )}
           {sessao.notas && (
             <p className="pg-notes sessao-item__notes">{sessao.notas}</p>
           )}
@@ -58,6 +66,7 @@ SessaoItem.propTypes = {
     clienteId:   PropTypes.number,
     planoId:     PropTypes.number,
     cliente:     PropTypes.shape({ displayName: PropTypes.string, username: PropTypes.string }),
+    treinador:   PropTypes.shape({ displayName: PropTypes.string, username: PropTypes.string }),
     plano:       PropTypes.shape({ titulo: PropTypes.string }),
   }).isRequired,
   onEditar: PropTypes.func,
