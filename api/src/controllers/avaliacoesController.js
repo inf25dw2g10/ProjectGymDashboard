@@ -78,12 +78,8 @@ if (req.user.role === 'cliente') {
 
     const includeList = [
       { model: Utilizador, as: 'cliente', attributes: atribsUtilizador },
+      { model: Utilizador, as: 'treinador', attributes: ['id', 'username', 'displayName'] },
     ];
-
-    // Cliente precisa de ver o nome do treinador nas avaliações profissionais
-    if (req.user.role === 'cliente') {
-      includeList.push({ model: Utilizador, as: 'treinador', attributes: ['id', 'username', 'displayName'] });
-    }
 
     const avaliacoes = await AvaliacaoFisica.findAll({
       where,

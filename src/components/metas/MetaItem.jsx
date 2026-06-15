@@ -20,7 +20,7 @@ const ESTADO_LABEL = {
   cancelada: 'Cancelada',
 };
 
-const MetaItem = ({ meta, soPessoal, onEditar, onApagar, ocultarBadgeTipo, treinadores }) => {
+const MetaItem = ({ meta, soPessoal, treinadores, onEditar, onApagar, ocultarBadgeTipo }) => {
   const badgeClass = ESTADO_BADGE[meta.estado] || ESTADO_BADGE.ativa;
   const estadoLabel = ESTADO_LABEL[meta.estado] || ESTADO_LABEL.ativa;
 
@@ -125,18 +125,15 @@ MetaItem.propTypes = {
     treinador:   PropTypes.shape({ displayName: PropTypes.string, username: PropTypes.string }),
   }).isRequired,
   soPessoal: PropTypes.bool,
+  treinadores: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, displayName: PropTypes.string, username: PropTypes.string })),
   onEditar:  PropTypes.func.isRequired,
   onApagar:  PropTypes.func.isRequired,
   ocultarBadgeTipo: PropTypes.bool,
-  treinadores: PropTypes.arrayOf(
-    PropTypes.shape({ id: PropTypes.number, displayName: PropTypes.string, username: PropTypes.string })
-  ),
 };
 
 MetaItem.defaultProps = {
   soPessoal: false,
   ocultarBadgeTipo: false,
-  treinadores: [],
 };
 
 export default MetaItem;

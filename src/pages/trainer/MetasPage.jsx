@@ -468,6 +468,7 @@ class MetasPage extends React.Component {
               key={meta.id}
               meta={meta}
               soPessoal={false}
+              treinadores={treinadores}
               onEditar={this.abrirModalEditar}
               onApagar={this.handleApagar}
               ocultarBadgeTipo={this.props.trainerId !== null}
