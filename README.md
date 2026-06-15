@@ -112,10 +112,10 @@ Documentação técnica da API (OpenAPI, Postman, Sequelize): ver [`api/README.m
 
 | Pasta / ficheiro | Conteúdo |
 |------------------|----------|
-| [`src/`](../src/) | Código fonte React (páginas, componentes, rotas) |
-| [`doc/`](.) | Relatório (capítulos C1-C4) e imagens |
-| [`api/`](../api/) | GymAPI - Express, modelos, migrations, seeders |
-| [`public/`](../public/) | Template HTML da SPA |
+| [`src/`](./src/) | Código fonte React (páginas, componentes, rotas) |
+| [`doc/`](./doc/) | Relatório (capítulos C1-C4) e imagens |
+| [`api/`](./api/) | GymAPI - Express, modelos, migrations, seeders |
+| [`public/`](./public/) | Template HTML da SPA |
 | [`docker-compose.prod.yml`](../docker-compose.prod.yml) | Stack de produção |
 | [`docker-compose.dev.yml`](../docker-compose.dev.yml) | Stack de desenvolvimento |
 | [`openapi.yaml`](../api/openapi.yaml) | Especificação OpenAPI (Swagger) |
